@@ -1,0 +1,32 @@
+
+# Node modules
+node_modules/
+
+# Playwright test artifacts
+test-results/
+playwright-report/
+blob-report/
+html-report/
+allure-results/
+
+# Environment files
+.env
+.env.*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# IDE configs
+.vscode/
+.idea/
+
+# Cache and temporary files
+*.tmp
+*.temp
+.cache/
+.auth/
