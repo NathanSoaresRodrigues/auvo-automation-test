@@ -1,4 +1,5 @@
 module.exports = {
+  pageTitle: '.title',
   firstName: '[data-test="firstName"]',
   lastName: '[data-test="lastName"]',
   postalCode: '[data-test="postalCode"]',
@@ -18,6 +19,7 @@ module.exports = {
   tax: '.summary_tax_label',
   total: '.summary_total_label',
   completeHeader: '[data-test="complete-header"]',
-  completeText: '[data-test="complete-text"]'
+  completeText: '[data-test="complete-text"]',
+  ponyExpressImage: 'img[alt="Pony Express"]'
 };
 

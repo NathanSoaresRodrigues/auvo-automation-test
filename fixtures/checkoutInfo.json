@@ -1,0 +1,10 @@
+{
+  "checkoutData": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "postalCode": "12345",
+      "description": "Dados válidos padrão para checkout"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 module.exports = {
   backButton: '[data-test="back-to-products"]',
-  productImage: '[data-test="inventory-item-img"]',
+  productImage: 'img[data-test^="item-"][data-test$="-img"]',
   productName: '[data-test="inventory-item-name"]',
   productDescription: '[data-test="inventory-item-desc"]',
   productPrice: '[data-test="inventory-item-price"]',

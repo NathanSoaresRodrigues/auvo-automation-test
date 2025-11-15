@@ -45,7 +45,10 @@ class CartPage extends BasePage {
 
   async removeItemByName(productName) {
     const item = await this.getCartItemByName(productName);
-    const removeButton = await item.$(selectors.removeButton);
+    const removeButton = await item.$('button[data-test^="remove-"]');
+    if (!removeButton) {
+      throw new Error(`Remove button not found for product "${productName}"`);
+    }
     await removeButton.click();
   }
 
@@ -54,7 +57,10 @@ class CartPage extends BasePage {
     if (!items[index]) {
       throw new Error(`Cart item index "${index}" not found.`);
     }
-    const removeButton = await items[index].$(selectors.removeButton);
+    const removeButton = await items[index].$('button[data-test^="remove-"]');
+    if (!removeButton) {
+      throw new Error(`Remove button not found for cart item at index "${index}"`);
+    }
     await removeButton.click();
   }
 
@@ -69,6 +75,14 @@ class CartPage extends BasePage {
   async getCartItemsCount() {
     const items = await this.getAllCartItems();
     return items.length;
+  }
+
+  async getPageTitle() {
+    const titleSelector = '.title';
+    if (await this.isVisible(titleSelector)) {
+      return await this.getText(titleSelector);
+    }
+    return null;
   }
 }
 

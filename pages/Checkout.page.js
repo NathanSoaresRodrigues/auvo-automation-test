@@ -91,6 +91,22 @@ class CheckoutPage extends BasePage {
     const match = text.match(/\$?(\d+\.?\d*)/);
     return match ? parseFloat(match[1]) : 0;
   }
+
+  async getErrorMessage() {
+    const errorSelector = '[data-test="error"]';
+    if (await this.isVisible(errorSelector)) {
+      return await this.getText(errorSelector);
+    }
+    return null;
+  }
+
+  async getPageTitle() {
+    const titleSelector = '.title';
+    if (await this.isVisible(titleSelector)) {
+      return await this.getText(titleSelector);
+    }
+    return null;
+  }
 }
 
 module.exports = CheckoutPage;

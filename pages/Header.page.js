@@ -14,6 +14,7 @@ class Header extends BasePage {
   async close() {
     if (await this.isOpen()) {
       await this.click(selectors.closeMenuButton);
+      await this.page.waitForTimeout(500); // Wait for menu to close
     }
   }
 
