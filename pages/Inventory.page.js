@@ -6,23 +6,19 @@ class InventoryPage extends BasePage {
     super(page);
   }
 
-  // Waits until inventory page is fully loaded
   async waitForPageLoad() {
     await this.waitForElement(selectors.inventoryContainer);
   }
 
-  // Returns all product elements on the page
   async getAllProducts() {
     return await this.getElements(selectors.inventoryItem);
   }
 
-  // Returns a product element by its index on the page
   async getProductByIndex(index) {
     const products = await this.getAllProducts();
     return products[index];
   }
 
-  // Returns a product element by its visible name
   async getProductByName(productName) {
     const products = await this.getAllProducts();
 
@@ -34,13 +30,11 @@ class InventoryPage extends BasePage {
     throw new Error(`Product with name "${productName}" not found on inventory list.`);
   }
 
-  // Returns the price of a product by its name
   async getProductPriceByName(productName) {
     const product = await this.getProductByName(productName);
     return await product.$eval(selectors.itemPrice, el => el.textContent.trim());
   }
 
-  // Adds a product to the cart by name
   async addProductToCartByName(productName, productJsonList) {
     const productData = productJsonList.find(p => p.name === productName);
 
@@ -52,7 +46,6 @@ class InventoryPage extends BasePage {
     await this.click(buttonSelector);
   }
 
-  // Adds a product to the cart by its index in the JSON data
   async addProductToCartByJsonIndex(index, productJsonList) {
     if (!productJsonList[index]) {
       throw new Error(`Product index "${index}" not found in JSON data.`);
@@ -64,7 +57,6 @@ class InventoryPage extends BasePage {
     await this.click(buttonSelector);
   }
 
-  // Removes a product from the cart by name
   async removeProductFromCartByName(productName, productJsonList) {
     const productData = productJsonList.find(p => p.name === productName);
 
@@ -76,10 +68,18 @@ class InventoryPage extends BasePage {
     await this.click(buttonSelector);
   }
 
-  // Open product details by name
   async openProductDetailsByName(productName) {
     const product = await this.getProductByName(productName);
-    await product.click();
+    const nameLink = await product.$(selectors.itemName);
+    await nameLink.click();
+  }
+
+  async sortProducts(sortOption) {
+    await this.page.selectOption(selectors.sortDropdown, sortOption);
+  }
+
+  async getSortOption() {
+    return await this.page.$eval(selectors.sortDropdown, el => el.value);
   }
 }
 
