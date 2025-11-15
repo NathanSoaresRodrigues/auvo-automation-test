@@ -60,6 +60,42 @@ Observação: os testes usam `page.goto('/')` — verifique se `playwright.confi
 
 ---
 
+**Relatórios com Allure**
+
+Este projeto está configurado com **Allure Report** para gerar relatórios detalhados e visuais dos testes.
+
+Pré-requisitos para Allure:
+- Java Runtime Environment (JRE) instalado e configurado no PATH
+- Allure CLI (instalável via npm globalmente ou localmente no projeto)
+
+Gerar e visualizar relatório Allure:
+
+```powershell
+# Executar os testes (isso gera resultados em ./allure-results)
+npx playwright test
+
+# Gerar o relatório Allure a partir dos resultados
+allure generate ./allure-results -o ./allure-report
+
+# Abrir o relatório no navegador
+allure open ./allure-report
+```
+
+Ou em um único comando (se Allure estiver instalado globalmente):
+
+```powershell
+npx playwright test && allure generate ./allure-results -o ./allure-report && allure open ./allure-report
+```
+
+O relatório Allure fornece:
+- **Visão geral** de testes passados, falhados e ignorados
+- **Histórico** de execuções ao longo do tempo
+- **Detalhes** de cada teste (duração, logs, screenshots)
+- **Gráficos** de tendência e distribuição de resultados
+- **Rastreabilidade** entre cenários e requisitos
+
+---
+
 **Estrutura do repositório**
 
 - `pages/` — Page Objects (POM): exemplos: `Login.page.js`, `Inventory.page.js`, `ProductDetails.page.js`, `Cart.page.js`, `Checkout.page.js`, `Header.page.js`, `Base.page.js`

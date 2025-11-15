@@ -8,6 +8,7 @@ playwright-report/
 blob-report/
 html-report/
 allure-results/
+allure-report/
 
 # Environment files
 .env
