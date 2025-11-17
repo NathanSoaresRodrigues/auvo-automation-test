@@ -139,6 +139,13 @@ OBS: os testes seguem o padrão Arrange / Act / Assert (AAA).
 - Pesquisa: o site `saucedemo` não tem um campo de busca nativo. O requisito foi atendido através de seleção/filtragem por nome (método `addProductToCartByName`) e ordenação (testes TC-INVENTORY-004 a TC-INVENTORY-007).
 - CI / Publicação: confirme que o repositório foi publicado no GitHub e compartilhe o link (requisito de entrega).
 - Execução local: alguns testes abrem novas abas (ex.: About) — caso haja bloqueio de popups ou políticas de rede, isso pode impactar a execução em ambientes restritos.
+- Se você já executou `allure generate` anteriormente e precisa regenerar o relatório a partir de novos resultados, adicione `--clean` para remover o relatório anterior antes de gerar. Exemplo:
+
+```powershell
+allure generate ./allure-results -o ./allure-report --clean
+```
+
+- Se você preferir não usar Allure, altere o reporter no `playwright.config.js` de `['allure-playwright']` para `['html']`. Ao usar `['html']`, execute `npx playwright show-report` para visualizar o relatório HTML nativo do Playwright.
 
 ---
 
